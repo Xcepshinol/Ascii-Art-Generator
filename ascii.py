@@ -1,12 +1,18 @@
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 def draw(input_im,text_file):
     lett = "@#$%&*+-. " #character corresponding to brightness
 
     oa = []
 
-    im = Image.open(input_im).convert("L") #convert to grayscale
-    w,l = im.size #pixel width and length of image
+    im_b = Image.open(input_im).convert("L") #convert to grayscale
+    w1,l1 = im_b.size #pixel width and length of image
+    aspect = l1/w1
+
+    w = 250 #resized width constant
+    l = int(aspect*250*0.55) #corresponding length
+
+    im = im_b.resize((w,l)) #resized image
 
     for i in range(l):
         oa.append([]) #initialize character matrix
@@ -16,15 +22,15 @@ def draw(input_im,text_file):
 
     with open(text_file,'w') as imat: #write to txt file
         for k in range(len(oa)):
-            for p in oa[k]:
-                imat.write(p)
+            for p in range(len(oa[k])):
+                imat.write(oa[k][p])
             imat.write("\n") #space for each line in character matrix
 
     return
 
 #local variables
-input_im = "im4.jpg"
-text_file = "text12.txt"
+input_im = "test.jpg"
+text_file = "test_output.txt"
 
 draw(input_im, text_file)
     
