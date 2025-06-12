@@ -1,5 +1,4 @@
 **Ascii Art Generator!**
-
 If you ever wanted to see your pictures 'ascii-fied' now you can! 
 All you need to do is upload a photo and watch as your image turns into characters.
 
