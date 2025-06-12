@@ -1,9 +1,15 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 
+<<<<<<< Updated upstream
 def draw(input_im,text_file):
     lett = "@#$%&*+-. " #character corresponding to brightness
 
     oa = []
+=======
+def draw(input_im,text_file=False):
+    lett = "@#$%&*+-.  " #character corresponding to brightness
+    s=''
+>>>>>>> Stashed changes
 
     im_b = Image.open(input_im).convert("L") #convert to grayscale
     w1,l1 = im_b.size #pixel width and length of image
@@ -15,6 +21,7 @@ def draw(input_im,text_file):
     im = im_b.resize((w,l)) #resized image
 
     for i in range(l):
+<<<<<<< Updated upstream
         oa.append([]) #initialize character matrix
         for j in range(w):
             x = (255-(im.getpixel((j,i))))//25 #find the character corresponding brightness
@@ -26,9 +33,22 @@ def draw(input_im,text_file):
                 imat.write(oa[k][p])
             imat.write("\n") #space for each line in character matrix
 
+=======
+        s+='\n'
+        for j in range(w):
+            x = (255-(im.getpixel((j,i))))//25 #find the character corresponding brightness
+            s+=lett[x]
+
+    try:
+        with open(text_file,'w') as imat: #write to txt file
+            imat.write(s)
+    except:    
+        print(s)
+
+>>>>>>> Stashed changes
     return
 
-#local variables
+#global variables
 input_im = "test.jpg"
 text_file = "test_output.txt"
 
