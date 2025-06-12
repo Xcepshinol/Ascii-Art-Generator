@@ -1,44 +1,19 @@
 from PIL import Image
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-def draw(input_im,text_file):
-=======
-def draw(input_im,text_file=False):
->>>>>>> e273ff5692e6724e917aeeb622038013a2522fc0
-    lett = "@#$%&*+-. " #character corresponding to brightness
-
-    oa = []
-=======
 def draw(input_im,text_file=False):
     lett = "@#$%&*+-.  " #character corresponding to brightness
     s=''
->>>>>>> Stashed changes
 
     im_b = Image.open(input_im).convert("L") #convert to grayscale
     w1,l1 = im_b.size #pixel width and length of image
     aspect = l1/w1
 
-    w = 100 #resized width constant
-    l = int(aspect*w*0.55) #corresponding length
+    w = 250 #resized width constant
+    l = int(aspect*250*0.55) #corresponding length
 
     im = im_b.resize((w,l)) #resized image
 
-<<<<<<< HEAD
     for i in range(l):
-<<<<<<< Updated upstream
-        oa.append([]) #initialize character matrix
-        for j in range(w):
-            x = (255-(im.getpixel((j,i))))//25 #find the character corresponding brightness
-            oa[i].append(lett[x-1]) #add character to character matrix
-
-    with open(text_file,'w') as imat: #write to txt file
-        for k in range(len(oa)):
-            for p in range(len(oa[k])):
-                imat.write(oa[k][p])
-            imat.write("\n") #space for each line in character matrix
-
-=======
         s+='\n'
         for j in range(w):
             x = (255-(im.getpixel((j,i))))//25 #find the character corresponding brightness
@@ -50,34 +25,13 @@ def draw(input_im,text_file=False):
     except:    
         print(s)
 
->>>>>>> Stashed changes
-=======
-    try:
-        for i in range(l):
-            oa.append([]) #initialize character matrix
-            for j in range(w):
-                x = (255-(im.getpixel((j,i))))//25 #find the character corresponding brightness
-                oa[i].append(lett[x-1]) #add character to character matrix
-
-        with open(text_file,'w') as imat: #write to txt file
-            for k in range(len(oa)):
-                for p in range(len(oa[k])):
-                    imat.write(oa[k][p])
-                imat.write("\n") #space for each line in character matrix
-    except:
-        for i in range(l):
-            s =''
-            for j in range(w):
-                x = (255-(im.getpixel((j,i))))//25 #find the character corresponding brightness
-                s+=lett[x-1]
-            print(s)
->>>>>>> e273ff5692e6724e917aeeb622038013a2522fc0
     return
 
 #global variables
 input_im = "test.jpg"
+text_file = "test_output.txt"
 
-draw(input_im)
+draw(input_im, text_file)
     
 
 
