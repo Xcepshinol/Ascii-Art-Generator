@@ -2,6 +2,7 @@
 
 Turn your photos into text masterpieces!  
 Upload an image, run a small Python script, and watch your picture “ascii-fied” in seconds.
+Don't know what to "ascii-fy"? Run the terminal version and use your webcam to "ascii-fy" yourself in real time.
 
 ---
 
@@ -17,6 +18,7 @@ Upload an image, run a small Python script, and watch your picture “ascii-fied
 ## 🔧 Prerequisites
 
 - Python 3.7+  
+- [OpenCV] (for webcam)
 - [Pillow](https://pypi.org/project/Pillow/) (for image loading)  
 
 ---
