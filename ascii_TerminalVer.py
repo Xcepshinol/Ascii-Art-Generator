@@ -1,4 +1,5 @@
 import cv2, os, platform
+import keyboard
 
 def clear_term():
     if platform.system() == 'Windows':
@@ -16,7 +17,7 @@ def webcam():
 
     
     while True:
-        s=''
+        s='Press Escape to Quit'
 
         ret, frame = cap.read()
         if not ret:
@@ -38,12 +39,9 @@ def webcam():
                 s+=lett[x]        
         print(s)
 
-        cv2.imshow('test', frame)
-
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        if keyboard.is_pressed('esc'):
             break
-    
+
     cap.release()
-    cv2.destroyAllWindows()
 
 webcam()
