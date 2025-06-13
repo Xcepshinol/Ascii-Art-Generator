@@ -17,7 +17,7 @@ def webcam():
 
     
     while True:
-        s='Press Escape to Quit'
+        s=''
 
         ret, frame = cap.read()
         if not ret:
@@ -36,7 +36,7 @@ def webcam():
             s += '\n'
             for j in range(w):
                 x = (255-(frame[i, j]))//25 #find the character corresponding brightness
-                s+=lett[x]        
+                s+=lett[x]
         print(s)
 
         if keyboard.is_pressed('esc'):
