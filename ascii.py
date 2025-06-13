@@ -1,15 +1,16 @@
-from PIL import Image
+from tkinter import Tk, filedialog, Button, Label
+from PIL import Image, ImageTk
 
 def draw(input_im,text_file=False):
     lett = "@#$%&*+-.  " #character corresponding to brightness
     s=''
 
-    im_b = Image.open(input_im).convert("L") #convert to grayscale
+    im_b = input_im.convert("L") #convert to grayscale
     w1,l1 = im_b.size #pixel width and length of image
     aspect = l1/w1
 
-    w = 250 #resized width constant
-    l = int(aspect*250*0.55) #corresponding length
+    w = 100 #resized width constant
+    l = int(aspect*w*0.55) #corresponding length
 
     im = im_b.resize((w,l)) #resized image
 
@@ -28,10 +29,27 @@ def draw(input_im,text_file=False):
     return
 
 #global variables
-input_im = "test.jpg"
-text_file = "test_output.txt"
+def open_im():
+    file = filedialog.askopenfilename(title='select and image', filetypes=[("Image files","*.png *.jpg *.jpeg *.bmp")])
 
-draw(input_im, text_file)
+    if file:
+        img = Image.open(file)
+        img.thumbnail((300,300))
+
+        img_tk = ImageTk.PhotoImage(img)
+        label.config(image=img_tk)
+        label.image = img_tk
+
+        draw(img)
+
+root = Tk()
+root.title("ASCII Art Generator")
+
+Button(root, text="Upload Image", command=open_im).pack(pady=10)
+label = Label(root)
+label.pack()
+
+root.mainloop()
     
 
 
